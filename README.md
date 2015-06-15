@@ -1,5 +1,6 @@
 # Eloquent Faster
 Simple none-I/O cache for eloquent model accessor and mutators.
+
 [![Build Status](https://travis-ci.org/reshadman/eloquent-faster.svg?branch=master)](https://travis-ci.org/reshadman/eloquent-faster)
 
 ### Installation

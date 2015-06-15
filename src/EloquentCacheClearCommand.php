@@ -51,7 +51,7 @@ class EloquentCacheClearCommand extends Command
 
             $this->info("Cache cleared.");
 
-        }else {
+        } else {
 
             $this->comment("No cache to clear.");
 

@@ -15,7 +15,7 @@ class EloquentClassFinder {
     {
         $classes = get_declared_classes();
 
-        foreach($classes as $class) {
+        foreach ($classes as $class) {
 
             if (is_a($class, Model::class, true)) {
 

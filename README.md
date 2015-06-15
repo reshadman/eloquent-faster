@@ -2,7 +2,8 @@
 Simple none-I/O cache for eloquent model accessor and mutators.
 
 [![Build Status](https://travis-ci.org/reshadman/eloquent-faster.svg?branch=master)](https://travis-ci.org/reshadman/eloquent-faster)
-
+[![Latest Stable Version](https://poser.pugx.org/reshadman/eloquent-faster/v/stable)](https://packagist.org/packages/reshadman/eloquent-faster)
+[![Total Downloads](https://poser.pugx.org/reshadman/eloquent-faster/downloads)](https://packagist.org/packages/reshadman/eloquent-faster)
 ### Installation
 
 ```php

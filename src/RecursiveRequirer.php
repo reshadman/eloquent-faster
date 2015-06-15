@@ -46,7 +46,7 @@ class RecursiveRequirer {
     /**
      * Requires files in a directory given by a criteria
      *
-     * @return array
+     * @return array|\Generator
      */
     public function requireOnceAllFiles()
     {

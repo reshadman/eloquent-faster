@@ -32,7 +32,7 @@ For clearing cache
 php artisan eloquent:clear
 ```
 
-## Problem
+### Problem
 Simply the problem begins from [this issuge](https://github.com/laravel/framework/issues/9276).
 
 
@@ -46,4 +46,18 @@ Wouldn't it be cool to have something like ```php artisan eloquent:cache``` for 
 
 If you use *OPCACHE* in your PHP installation, this class will not use I/O for each script run, as opcache loads code into memory.
 
+### Running unit tests
+
+Clone the repo
+
+```
+git clone git@github.com:reshadman/eloquent-faster.git
+```
+
+Then run ```composer update```
+
+Now you can run phpunit in the repo folder.
+```
+vendor/bin/phpunit
+```
 

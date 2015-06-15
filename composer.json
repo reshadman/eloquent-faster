@@ -1,19 +1,31 @@
 {
-    "name": "reshadman/eloquent-faster",
-    "description": "Simple none-I/O cache for eloquent models configs, like mutators and accessor.",
-    "tags" : ["laravel", "eloquent", "performance"],
-    "authors": [
-        {
-            "name": "Reza Shadman",
-            "email": "pcfeeler@gmail.com"
-        }
-    ],
-    "minimum-stability": "stable",
-    "require": {
-      "laravel/framework": "5.1.*"
-    },
-    "require-dev": {
-      "phpunit/phpunit": "~4.6",
-      "mockery/mockery": "1.0.*@dev"
+  "name": "reshadman/eloquent-faster",
+  "description": "Simple none-I/O cache for eloquent model configs, like mutators and accessors.",
+  "tags" : ["laravel", "eloquent", "performance"],
+  "type" : "library",
+  "license" : "MIT",
+  "authors": [
+    {
+        "name": "Reza Shadman",
+        "email": "pcfeeler@gmail.com"
     }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "Reshadman\\EloquentFaster\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Reshadman\\EloquentFaster\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "laravel/framework": "5.1.*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.6",
+    "mockery/mockery": "1.0.*@dev"
+  }
 }

@@ -1,6 +1,7 @@
 <?php namespace Reshadman\EloquentFaster;
 
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
 class EloquentFasterServiceProvider extends ServiceProvider {
@@ -12,6 +13,13 @@ class EloquentFasterServiceProvider extends ServiceProvider {
      */
     const CACHE_COMMAND_NAME = 'commands.faster_eloquent.cache';
 
+    /*
+     * Name of the key for command binding
+     *
+     * @var string
+     */
+    const CACHE_CLEAR_COMMAND_CLEAR = 'commands.faster_eloquent.clear';
+
     /**
      * Booting
      *
@@ -19,9 +27,9 @@ class EloquentFasterServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->commands(self::CACHE_COMMAND_NAME);
-
         $this->tryLoadingEloquentCache();
+
+        $this->addCommands();
     }
 
     /**
@@ -31,7 +39,18 @@ class EloquentFasterServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app->singleton(self::CACHE_COMMAND_NAME, EloquentCacheCommand::class);
+        $this->app->singleton(static::CACHE_COMMAND_NAME, function($app){
+
+            return new EloquentCacheCommand(new EloquentClassFinder(), $app['files']);
+
+        });
+
+        $this->app->singleton(static::CACHE_CLEAR_COMMAND_CLEAR, function($app){
+
+            /** @var Application $app */
+            return new EloquentCacheClearCommand($app['files']);
+
+        });
     }
 
     /**
@@ -43,9 +62,25 @@ class EloquentFasterServiceProvider extends ServiceProvider {
     {
         $this->app->booted(function() {
 
-            @require_once EloquentCacheCommand::getCachedEloquentPath();
+            $array = (array) @include_once EloquentCacheCommand::getCachedEloquentPath();
 
+            if (!empty($array)) {
+                FasterModel::loadArrayIntoCachedMutatorAttributes($array);
+            }
         });
+    }
+
+    /**
+     * Add commands to the command container
+     *
+     * @return void
+     */
+    protected function addCommands()
+    {
+        $this->commands([
+            self::CACHE_COMMAND_NAME,
+            self::CACHE_CLEAR_COMMAND_CLEAR
+        ]);
     }
 
     /**

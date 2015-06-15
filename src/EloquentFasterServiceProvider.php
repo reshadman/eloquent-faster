@@ -3,7 +3,7 @@
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\ServiceProvider;
 
-class FasterEloquentServiceProvider extends ServiceProvider {
+class EloquentFasterServiceProvider extends ServiceProvider {
 
     /**
      * Name of the key for command binding

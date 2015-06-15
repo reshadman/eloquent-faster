@@ -4,7 +4,7 @@ Simple none-I/O cache for eloquent model accessor and mutators.
 ### Installation
 
 ```php
-composer require "reshadman/faster-eloquent"
+composer require "reshadman/eloquent-faster"
 ```
 ### Usage
 

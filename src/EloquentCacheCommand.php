@@ -104,7 +104,7 @@ class EloquentCacheCommand extends Command
 
         array_pop($exploded);
 
-        return implode(DIRECTORY_SEPARATOR, $exploded);
+        return rtrim(implode(DIRECTORY_SEPARATOR, $exploded), DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR;
     }
 
     /**

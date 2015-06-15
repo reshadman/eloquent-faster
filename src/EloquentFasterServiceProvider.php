@@ -39,13 +39,13 @@ class EloquentFasterServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $this->app->singleton(static::CACHE_COMMAND_NAME, function($app){
+        $this->app->singleton(static::CACHE_COMMAND_NAME, function($app) {
 
             return new EloquentCacheCommand(new EloquentClassFinder(), $app['files']);
 
         });
 
-        $this->app->singleton(static::CACHE_CLEAR_COMMAND_CLEAR, function($app){
+        $this->app->singleton(static::CACHE_CLEAR_COMMAND_CLEAR, function($app) {
 
             /** @var Application $app */
             return new EloquentCacheClearCommand($app['files']);
